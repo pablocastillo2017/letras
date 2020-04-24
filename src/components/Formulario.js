@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 
-const Formulario = ({ guardarBusquedaletra }) => {
+const Formulario = ({ guardarBusquedaLetra }) => {
   const [busqueda, guardarBusqueda] = useState({
     artista: "",
     cancion: "",
   });
-
   const [error, guardarError] = useState(false);
 
   const { artista, cancion } = busqueda;
 
-  // Funcion a cada input para leer su contenido
+  // función a cada input para leer su contenido
   const actualizarState = (e) => {
     guardarBusqueda({
       ...busqueda,
@@ -18,18 +17,18 @@ const Formulario = ({ guardarBusquedaletra }) => {
     });
   };
 
-  // Consultar las APIS
-
+  // consultar las apis
   const buscarInformacion = (e) => {
     e.preventDefault();
+
     if (artista.trim() === "" || cancion.trim() === "") {
       guardarError(true);
       return;
     }
     guardarError(false);
+    // Todo bien, pasar al componente principal
 
-    //Pasar Al componente Principal
-    guardarBusquedaletra(busqueda);
+    guardarBusquedaLetra(busqueda);
   };
 
   return (
@@ -46,7 +45,8 @@ const Formulario = ({ guardarBusquedaletra }) => {
             className="col card text-white bg-transparent mb-5 pt-5 pb-2"
           >
             <fieldset>
-              <leyend className="text-center">Buscador Letras Canciones</leyend>
+              <legend className="text-center">Buscador Letras Canciones</legend>
+
               <div className="row">
                 <div className="col-md-6">
                   <div className="form-group">
@@ -75,7 +75,8 @@ const Formulario = ({ guardarBusquedaletra }) => {
                   </div>
                 </div>
               </div>
-              <button type="submit" btn="btn btn-primary float-right">
+
+              <button type="submit" className="btn btn-primary float-right">
                 Buscar
               </button>
             </fieldset>
